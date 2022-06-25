@@ -10,7 +10,7 @@ const sauceRoutes=require('./routes/sauce')
 
 
 
-mongoose.connect('mongodb+srv://walid:ronaldo75@cluster0.7vjlbbg.mongodb.net/saucePiquante',
+mongoose.connect('mongodb+srv://'+ process.env.DB_USER_PASS  +'@cluster0.7vjlbbg.mongodb.net/saucePiquante',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))

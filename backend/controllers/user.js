@@ -2,12 +2,18 @@ const bcrypt =require('bcrypt')
 const User=require('../models/User')
 const jwt=require('jsonwebtoken')
 
+const cryptojs=require('crypto-js')
+
+
 
 exports.signup=(req,res,next)=>{
+    const emailCrypto=cryptojs.HmacSHA256(req.body.email,"SECRET_KEY").toString()
+
     bcrypt.hash(req.body.password,10)
     .then(hash=>{
+        
         const user=new User({
-            email:req.body.email,
+            email:emailCrypto,
             password:hash
         });
         user.save().then(()=>res.status(201).json({message:'Utilisateur crée !'})).catch(error=>res.status(400).json({error}))
