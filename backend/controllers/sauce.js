@@ -64,9 +64,7 @@ exports.getAllSauces=(req,res,next)=>{
 //Like sauce
 exports.likeSauce = (req, res, next) => {
     switch (req.body.like) {
-      //cancel = 0
-      //check if the user had liked or disliked the sauce
-      //uptade the sauce, send message/error
+    
       case 0:
         Sauce.findOne({ _id: req.params.id })
           .then((sauce) => {

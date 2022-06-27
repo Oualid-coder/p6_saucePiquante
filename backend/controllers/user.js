@@ -32,10 +32,10 @@ exports.signup=(req,res,next)=>{
                 if(!valid){
                     return res.status(401).json({error:'Mot de passe incorrect'})
                 }
-                return res.status(200).json({
+                return res.status(200).json({// on renvoie le user id et le token
                     userId:user._id,
                     token:jwt.sign({userId:user._id},
-                        'RANDOM_TOKEN_SECRET',
+                        'udl*VFMnxp5Crly-({',
                         {expiresIn:'24h'})
                 });
             }).catch(error =>res.status(500).json({error}))
